@@ -31,6 +31,18 @@ function drawFood() {
     ctx.fillRect(snake.foodPosition.x * GRID_SIZE, snake.foodPosition.y * GRID_SIZE, GRID_SIZE, GRID_SIZE);
 }
 
+function drawScore() {
+    ctx.fillStyle = 'white';
+    ctx.font = '20px Arial';
+    ctx.fillText(`Score: ${snake.score}`, 10, 30);
+}
+
+function drawTitle() {
+    ctx.fillStyle = 'white';
+    ctx.font = '30px Arial';
+    ctx.fillText('Snake Game', 200, 30);
+}
+
 function handleKeys(event) {
     switch (event.key) {
         case 'ArrowUp':
@@ -100,6 +112,8 @@ function resetGame() {
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawTitle();
+    drawScore();
     drawSnake();
     drawFood();
 }
