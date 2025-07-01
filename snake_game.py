@@ -2,7 +2,7 @@
 
 import pygame
 import sys
-import random
+import secrets
 
 # Initialize Pygame
 pygame.init()
@@ -26,7 +26,7 @@ class Snake:
     def __init__(self):
         self.length = 1
         self.positions = [((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))]
-        self.direction = random.choice([pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT])
+        self.direction = secrets.choice([pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT])
         self.color = GREEN
         self.score = 0
         self.food_position = self.random_food_position()
@@ -54,12 +54,12 @@ class Snake:
     def reset(self):
         self.length = 1
         self.positions = [((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))]
-        self.direction = random.choice([pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT])
+        self.direction = secrets.choice([pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT])
         self.score = 0
         self.food_position = self.random_food_position()
 
     def random_food_position(self):
-        return (random.randint(0, GRID_WIDTH-1)*GRID_SIZE, random.randint(0, GRID_HEIGHT-1)*GRID_SIZE)
+        return (secrets.SystemRandom().randint(0, GRID_WIDTH-1)*GRID_SIZE, secrets.SystemRandom().randint(0, GRID_HEIGHT-1)*GRID_SIZE)
 
     def draw(self, surface):
         for p in self.positions:
